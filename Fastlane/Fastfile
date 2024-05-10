@@ -6,8 +6,8 @@ platform :ios do
   lane :build do
     # Assuming you're using xcodebuild for building, modify as needed
     xcodebuild(
-      scheme: 'YourScheme',
-      workspace: 'YourWorkspace.xcworkspace',
+      scheme: 'SE491GroupProject',
+      workspace: 'SE491GroupProject.xcworkspace',
       configuration: 'Debug',
       clean: true,
       build: true
@@ -17,7 +17,7 @@ platform :ios do
   desc 'Executes unit tests'
   lane :unit_test do |options|
     scan(
-      scheme: 'YourScheme', # Ensure you specify your scheme
+      scheme: 'SE491GroupProject', # Ensure you specify your scheme
       clean: options[:clean] || false,
       skip_package_dependencies_resolution: options[:skip_package_dependencies_resolution] || false
     )
