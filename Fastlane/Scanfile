@@ -5,7 +5,6 @@ workspace "SE491GroupProject.xcodeproj/project.xcworkspace"
 scheme "SE491GroupProject"
 sdk "iphonesimulator"
 device "iPhone 15 Pro"
-code_signing_required false
 code_coverage true
 xcargs '-parallelizeTargets'
 prelaunch_simulator true
