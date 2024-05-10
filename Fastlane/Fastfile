@@ -2,35 +2,24 @@ fastlane_version '2.157'
 default_platform :ios
 
 platform :ios do
-
-  desc 'Build the iOS application'
+  desc 'Builds the iOS project'
   lane :build do
-    # Commands to build your iOS app
-    # Example:
-    gym(
-      scheme: 'SE491GroupProject',
+    # Assuming you're using xcodebuild for building, modify as needed
+    xcodebuild(
+      scheme: 'YourScheme',
+      workspace: 'YourWorkspace.xcworkspace',
+      configuration: 'Debug',
       clean: true,
-      output_directory: 'build',
-      include_bitcode: false
+      build: true
     )
   end
 
   desc 'Executes unit tests'
   lane :unit_test do |options|
     scan(
-      scheme: 'SE491GroupProject',  # Make sure to specify your test scheme
-      clean: options[:clean],
-      skip_package_dependencies_resolution: options[:skip_package_dependencies_resolution]
+      scheme: 'YourScheme', # Ensure you specify your scheme
+      clean: options[:clean] || false,
+      skip_package_dependencies_resolution: options[:skip_package_dependencies_resolution] || false
     )
   end
-
-  desc 'Executes UI tests'
-  lane :ui_test do
-    scan(
-      scheme: 'SE491GroupProject',  # Specify your UI tests scheme
-      devices: ["iPhone 15 Pro"],  # Adjust as necessary for your project
-      clean: true
-    )
-  end
-  
 end
