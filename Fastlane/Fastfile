@@ -2,24 +2,23 @@ fastlane_version '2.157'
 default_platform :ios
 
 platform :ios do
-  desc 'Builds the iOS project'
+  desc "Builds the iOS project"
   lane :build do
-    # Assuming you're using xcodebuild for building, modify as needed
-    xcodebuild(
-      scheme: 'SE491GroupProject',
-      workspace: 'SE491GroupProject.xcworkspace',
-      configuration: 'Debug',
+    gym(
+      workspace: "SE491GroupProject.xcodeproj/project.xcworkspace",
+      scheme: "SE491GroupProject",
+      sdk: "iphonesimulator",
+      derived_data_path: "Build/",
       clean: true,
-      build: true
+      xcargs: '-parallelizeTargets'
     )
   end
 
   desc 'Executes unit tests'
   lane :unit_test do |options|
     scan(
-      scheme: 'SE491GroupProject', # Ensure you specify your scheme
-      clean: options[:clean] || false,
-      skip_package_dependencies_resolution: options[:skip_package_dependencies_resolution] || false
+      clean: options[:clean],
+      skip_package_dependencies_resolution: options[:skip_package_dependencies_resolution]
     )
   end
 end
